@@ -1,0 +1,18 @@
+models/items/powerups/berserker_collide
+{
+	noSelfShadow
+	unsmoothedTangents
+	metal
+	collision
+	clamp
+	forceoverlays
+	
+	diffusemap	models/items/powerups/berserker.tga
+	{
+		blend bumpmap
+		map  addnormals(models/items/powerups/berserker_local.tga, heightmap(models/items/powerups/berserker_h.tga, 5 ) )
+
+	}
+	specularmap	 models/items/powerups/berserker_s.tga
+
+}

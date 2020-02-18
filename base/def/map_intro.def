@@ -1,0 +1,116 @@
+export fred {
+
+	camera	maps/fred/intro/intro_shot1.mb -range 1 121 -dest models/md5/cinematics/intro/intro_camera1
+	camera	maps/fred/intro/intro_shot2.mb -range 122 174 -dest models/md5/cinematics/intro/intro_camera2
+	camera	maps/fred/intro/intro_shot3.mb -range 175 1220 -dest models/md5/cinematics/intro/intro_camera3
+	
+	addoptions -prefix ENV_
+	mesh	maps/fred/intro/intro.mb -dest models/md5/cinematics/intro/intro_panel
+	anim	maps/fred/intro/intro.mb -range 175 1220 -dest models/md5/cinematics/intro/intro_panel
+
+	addoptions -prefix MEAT_
+	mesh	maps/fred/intro/intro.mb -range 1 1 -dest models/md5/cinematics/intro/intro_meat
+	anim	maps/fred/intro/intro.mb -range 1 1220 -xyzprecision 0.01 -quatprecision 0.00006 -dest models/md5/cinematics/intro/intro_meat
+
+
+}
+
+entityDef intro_cam {
+	"editor_color"					"1 .5 0"
+	"editor_mins"					"-16 -16 0"
+	"editor_maxs"					"16 16 64"
+	
+	"spawnclass"					"idCameraAnim"
+	"anim intro"					"models/md5/cinematics/intro/intro_camera.camera"
+	"anim intro_shot1"				"models/md5/cinematics/intro/intro_camera1.camera"
+	"anim intro_shot2"				"models/md5/cinematics/intro/intro_camera2.camera"
+	"anim intro_shot3"				"models/md5/cinematics/intro/intro_camera3.camera"
+}
+
+model intro_pinky {
+	mesh							models/md5/monsters/pinky/pinky.md5mesh 
+	anim intro						models/md5/cinematics/intro/pinky_intro.md5anim {
+		frame 384						trigger explosion1
+		frame 388						trigger explosion1
+		frame 400						trigger telelight1
+		frame 460						trigger telelight1
+		frame 850						trigger whispers
+		frame 1012						trigger breakglass
+	}
+}
+
+entityDef intro_pinky {
+	"inherit"						"cin_base"
+	"anim"							"intro"
+	"model"							"intro_pinky"
+}
+
+model intro_scientist {	
+	inherit							char_npc
+
+	anim shot1						models/md5/cinematics/intro/intro_charshot1.md5anim
+	anim shot2						models/md5/cinematics/intro/intro_charshot2.md5anim
+	anim shot3						models/md5/cinematics/intro/intro_charshot3.md5anim
+	anim shot4						models/md5/cinematics/intro/intro_charshot4.md5anim
+	anim shot5						models/md5/cinematics/intro/intro_charshot5.md5anim
+	anim shot6						models/md5/cinematics/intro/intro_charshot6.md5anim
+	anim shot7						models/md5/cinematics/intro/intro_charshot7.md5anim
+	anim shot8						models/md5/cinematics/intro/intro_charshot8.md5anim
+
+	anim knockback					models/md5/cinematics/intro/sci_2_knockback.md5anim {
+		frame 26						sound_body snd_footstep
+		frame 38						sound_body snd_footstep
+		frame 61						sound_body snd_footstep
+	}
+	anim walktowindow				models/md5/cinematics/intro/sci_3_walktowindow.md5anim {
+		frame 155						sound_body snd_footstep	
+		frame 168						sound_body snd_footstep	
+		frame 179						sound_body snd_footstep
+		frame 187						sound_body snd_footstep
+		frame 262						sound_body snd_footstep
+		frame 275						sound_body snd_footstep
+		frame 286						sound_body snd_footstep
+		frame 294						sound_body snd_footstep
+	}
+	anim killed						models/md5/cinematics/intro/sci_4_killed.md5anim
+
+	anim walk2stoplookaround		models/md5/characters/npcs/walk2stoplookaround.md5anim {
+		frame 10						sound_body snd_footstep
+		frame 22						sound_body snd_footstep
+		frame 34						sound_body snd_footstep
+		frame 42						sound_body snd_footstep
+	}
+
+}
+
+entityDef intro_scientist {	
+	"inherit"						"char_labcoat_young"
+	"size"							"12 12 74"
+	"model"							"intro_scientist"
+	"anim"							"intro"
+	"ik_numLegs"					"0"
+	"skin"							"skins/characters/npcs/labcoat_asian_tabletpc.skin"
+}
+
+model intro_panel {
+	mesh							models/md5/cinematics/intro/intro_panel.md5mesh
+	anim intro						models/md5/cinematics/intro/intro_panel.md5anim
+}
+
+entityDef intro_panel {
+	"inherit"					"cin_base"
+	"model"						"intro_panel"
+	"anim"						"intro"
+}
+
+model intro_meat {
+	mesh							models/md5/cinematics/intro/intro_meat.md5mesh
+	anim intro						models/md5/cinematics/intro/intro_meat.md5anim
+}
+
+entityDef intro_meat {
+	"inherit"					"cin_base"
+	"model"						"intro_meat"
+	"anim"						"intro"
+}
+
